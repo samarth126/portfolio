@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { ChevronRight, Code, GraduationCap, Briefcase, Trophy, FileText } from "lucide-react"
+import { ChevronRight, Code,Trophy, FileText } from "lucide-react"
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("about")
@@ -77,7 +77,7 @@ export default function Portfolio() {
               <CardTitle className="text-white">About Me</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-300">A graduate student in Computer Science at the University of North Carolina at Charlotte, I'm passionate about technology and innovation. With experience in full-stack development, machine learning, and cloud computing, I thrive on solving complex problems and building impactful applications.</p>
+                <p className="text-gray-300">A graduate student in Computer Science at the University of North Carolina at Charlotte, I am passionate about technology and innovation. With experience in full-stack development, machine learning, and cloud computing, I thrive on solving complex problems and building impactful applications.</p>
               </CardContent>
             </Card>
           </TabsContent>
