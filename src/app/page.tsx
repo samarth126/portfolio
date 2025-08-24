@@ -1,207 +1,173 @@
 "use client"
 
-import { useState } from 'react'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Progress } from "@/components/ui/progress"
-import { Badge } from "@/components/ui/badge"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { useState } from "react"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ChevronRight, Code,Trophy, FileText } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import { ChevronRight, Download, Play, Award, GraduationCap, Code, Brain } from "lucide-react"
+import Link from "next/link"
 
-export default function Portfolio() {
-  const [activeTab, setActiveTab] = useState("about")
+export default function LandingPage() {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
 
-  const skills = [
-    { name: "Python", level: 90 },
-    { name: "Java", level: 85 },
-    { name: "JavaScript", level: 80 },
-    { name: "ReactJS", level: 85 },
-    { name: "Django", level: 80 },
-    { name: "Node.js", level: 75 },
-    { name: "AWS", level: 70 },
-    { name: "Machine Learning", level: 75 },
-  ]
-
-  const experiences = [
+  const highlights = [
     {
-      title: "Graduate Teaching Assistant",
-      company: "University of North Carolina at Charlotte",
-      period: "August 2024 - Present",
-      description: "Assisting students in debugging and enhancing their React.js and full-stack projects.",
+      icon: <GraduationCap className="w-8 h-8" />,
+      title: "Master's at UNC Charlotte",
+      subtitle: "4.0 GPA • Computer Science",
+      color: "from-blue-500 to-cyan-500",
     },
     {
-      title: "Frappe Full-Stack Developer",
-      company: "Ideata Analytics Pvt. Ltd",
-      period: "June 2023 - October 2023",
-      description: "Developed a management system to streamline exam operations, increasing efficiency by 35%.",
+      icon: <Award className="w-8 h-8" />,
+      title: "Hackathon Champion",
+      subtitle: "ShellHacks 2024 • Technex 2023",
+      color: "from-yellow-500 to-orange-500",
     },
     {
-      title: "Python Django & ML Intern",
-      company: "Techlene Software Solutions",
-      period: "January 2023 - April 2023",
-      description: "Created a skin disease classification pipeline using CNNs and Transfer Learning on AWS, improving accuracy by 25%.",
+      icon: <Brain className="w-8 h-8" />,
+      title: "AI Research",
+      subtitle: "97.34% Accuracy • Published",
+      color: "from-purple-500 to-pink-500",
     },
     {
-      title: "Founder & Full-Stack Developer",
-      company: "Inflatech Solutions",
-      period: "January 2022 - April 2023",
-      description: "Developed custom solutions, enhancing client business efficiency and increasing online sales by 20%.",
+      icon: <Code className="w-8 h-8" />,
+      title: "Full-Stack Expert",
+      subtitle: "7+ Client Solutions • 15K+ Users",
+      color: "from-green-500 to-emerald-500",
     },
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-gray-100 p-8">
-      <header className="max-w-4xl mx-auto text-center mb-12">
-        <Avatar className="w-32 h-32 mx-auto mb-4 border-4 border-primary">
-          <AvatarImage src="/profile.png" alt="Samarth Bhole" />
-          <AvatarFallback>SB</AvatarFallback>
-        </Avatar>
-        <h1 className="text-4xl font-bold mb-2 text-white">Samarth Bhole</h1>
-        <p className="text-xl text-gray-400">Graduate Student in Computer Science | Full-Stack Developer | ML Enthusiast</p>
-      </header>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
+      {/* Hero Section */}
+   
+      <section className="relative min-h-screen flex items-center justify-center px-6">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 opacity-50" />
 
-      <main className="max-w-4xl mx-auto">
-        <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-5 mb-8">
-            <TabsTrigger value="about">About</TabsTrigger>
-            <TabsTrigger value="skills">Skills</TabsTrigger>
-            <TabsTrigger value="experience">Experience</TabsTrigger>
-            <TabsTrigger value="projects">Projects</TabsTrigger>
-            <TabsTrigger value="achievements">Achievements</TabsTrigger>
-          </TabsList>
-          <TabsContent value="about">
-            <Card className="bg-gray-800 border-gray-700">
-              <CardHeader>
-              <CardTitle className="text-white">About Me</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-300">A graduate student in Computer Science at the University of North Carolina at Charlotte, I am passionate about technology and innovation. With experience in full-stack development, machine learning, and cloud computing, I thrive on solving complex problems and building impactful applications.</p>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="skills">
-            <Card className="bg-gray-800 border-gray-700">
-              <CardHeader>
-                <CardTitle className="text-white">Skills</CardTitle>
-              </CardHeader>
-              <CardContent className="grid gap-4">
-                {skills.map((skill) => (
-                  <div key={skill.name} className="space-y-2">
-                    <div className="flex justify-between text-gray-300">
-                      <span>{skill.name}</span>
-                      <span>{skill.level}%</span>
-                    </div>
-                    <Progress value={skill.level} className="h-2" />
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="experience">
-            <Card className="bg-gray-800 border-gray-700">
-              <CardHeader>
-                <CardTitle className="text-white">Professional Experience</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ScrollArea className="h-[400px] pr-4">
-                  {experiences.map((exp, index) => (
-                    <div key={index} className="mb-6 relative pl-6 border-l-2 border-primary">
-                      <div className="absolute w-3 h-3 bg-primary rounded-full -left-[7px] top-2"></div>
-                      <h3 className="text-lg font-semibold text-gray-200">{exp.title}</h3>
-                      <p className="text-sm text-gray-400">{exp.company} | {exp.period}</p>
-                      <p className="mt-2 text-gray-300">{exp.description}</p>
-                    </div>
-                  ))}
-                </ScrollArea>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="projects">
-            <div className="grid gap-4 md:grid-cols-2">
-              <Card className="bg-gray-800 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-white">Med-Memory</CardTitle>
-                  <CardDescription className="text-gray-400">ShellHacks 2024 Winner</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-300">A comprehensive patient management tool for hospitals. Features medical PDF parsing, key data extraction, and health trend visualizations.</p>
-                </CardContent>
-                <CardFooter>
-                  <Badge variant="secondary" className="bg-primary text-primary-foreground">AI/ML</Badge>
-                  <Badge variant="secondary" className="ml-2 bg-primary text-primary-foreground">Healthcare</Badge>
-                </CardFooter>
-              </Card>
-              <Card className="bg-gray-800 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-white">Clothes Pattern Recognition System</CardTitle>
-                  <CardDescription className="text-gray-400">Technex 2023 Winner</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-300">Built a machine learning system with computer vision capabilities, enhancing e-commerce experiences with high-accuracy pattern recognition.</p>
-                </CardContent>
-                <CardFooter>
-                  <Badge variant="secondary" className="bg-primary text-primary-foreground">Computer Vision</Badge>
-                  <Badge variant="secondary" className="ml-2 bg-primary text-primary-foreground">E-commerce</Badge>
-                </CardFooter>
-              </Card>
+        <div className="relative z-10 text-center max-w-6xl mx-auto mt-8">
+          {/* Video Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mb-8"
+          >
+            <div className="relative w-full max-w-2xl mx-auto mb-8">
+              <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl flex items-center justify-center border border-gray-700">
+               {!isVideoPlaying ? (
+  <Button
+    onClick={() => setIsVideoPlaying(true)}
+    size="lg"
+    className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20"
+  >
+    <Play className="w-6 h-6 mr-2" />
+    Watch Introduction
+  </Button>
+) : (
+  <video
+    className="w-full h-full rounded-2xl"
+    src="/Samarth_Bhole__From_Complex_Problems_to_Elegant_Solutions.mp4"
+    controls
+    autoPlay
+  />
+)}
+              </div>
             </div>
-          </TabsContent>
-          <TabsContent value="achievements">
-            <Card className="bg-gray-800 border-gray-700">
-              <CardHeader>
-                <CardTitle className="text-white">Achievements & Publications</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <Trophy className="mr-2 h-5 w-5 text-yellow-500" />
-                    <div>
-                      <strong className="text-gray-200">Best First-Time Hack – ShellHacks 2024</strong>
-                      <p className="text-gray-300">Developed Med-Memory, a patient management and diagnostics tool using a fine-tuned LLM and real-time data visualization.</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <Trophy className="mr-2 h-5 w-5 text-yellow-500" />
-                    <div>
-                      <strong className="text-gray-200">Winner, Technex 2023</strong>
-                      <p className="text-gray-300">Led the development of a clothes pattern recognition system that significantly improved user search experiences in e-commerce.</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start">
-                    <FileText className="mr-2 h-5 w-5 text-blue-500" />
-                    <div>
-                      <strong className="text-gray-200">Research Publication</strong>
-                      <p className="text-gray-300">Presented research on emotion detection through EEG at the Conference on Sustainable Computing for Multidisciplinary Realities 2022.</p>
-                    </div>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
-      </main>
+          </motion.div>
 
-      <footer className="max-w-4xl mx-auto mt-12 text-center">
-        
-      <Button asChild variant="outline" className="mr-2 bg-primary text-primary-foreground hover:bg-white/90">
-  <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-    <FileText className="mr-2 h-4 w-4" /> Resume
-  </a>
-</Button>
-        
-        <Button asChild variant="outline" className="mr-2 bg-primary text-primary-foreground hover:bg-white/90">
-          <a href="https://github.com/samarth126" target="_blank" rel="noopener noreferrer">
-            <Code className="mr-2 h-4 w-4" /> GitHub
+          {/* Main Headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-6"
+          >
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
+              Hi, I'm{" "}
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Samarth Bhole
+              </span>
+            </h1>
+            <div className="text-2xl md:text-3xl text-gray-300 mb-2">AI Engineer, Full-Stack Developer & Innovator</div>
+          </motion.div>
+
+          {/* Subtext */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-xl text-gray-400 max-w-3xl mx-auto mb-8"
+          >
+            Crafting intelligent systems and scalable applications that bridge the gap between cutting-edge AI research
+            and real-world impact. From voice AI agents to full-stack solutions serving 15K+ users.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+          >
+            <Link href="/projects">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3"
+              >
+                View My Work
+                <ChevronRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
+          <a href="/Samarth_Bhole_resume_v2.pdf" download>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-gray-600 text-gray-300 hover:bg-gray-800 px-8 py-3 bg-transparent"
+            >
+              <Download className="w-5 h-5 mr-2" />
+              Download Resume
+            </Button>
           </a>
-        </Button>
-        
-        <Button variant="outline" className="bg-primary text-primary-foreground hover:bg-white/90">
-          <ChevronRight className="mr-2 h-4 w-4" /> Contact Me
-        </Button>
-      
-      </footer>
+          </motion.div>
+
+          {/* Animated Highlights */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            {highlights.map((highlight, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                className="group"
+              >
+                <Card className="bg-gray-800/50 border-gray-700 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-300">
+                  <CardContent className="p-6 text-center">
+                    <div
+                      className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${highlight.color} flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      {highlight.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold text-white mb-2">{highlight.title}</h3>
+                    <p className="text-gray-400 text-sm">{highlight.subtitle}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Floating Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        </div>
+      </section>
     </div>
   )
 }
