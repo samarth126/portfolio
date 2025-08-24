@@ -60,7 +60,7 @@ export default function AboutPage() {
       year: "2024-2025",
       title: "Master's in Computer Science",
       institution: "University of North Carolina at Charlotte",
-      description: "4.0 GPA • Research in AI and Multimodal Systems",
+      description: "3.88 GPA • Research in AI and Multimodal Systems",
       type: "education",
     },
     {

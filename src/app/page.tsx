@@ -14,7 +14,7 @@ export default function LandingPage() {
     {
       icon: <GraduationCap className="w-8 h-8" />,
       title: "Master's at UNC Charlotte",
-      subtitle: "4.0 GPA • Computer Science",
+      subtitle: "3.88 GPA • Computer Science",
       color: "from-blue-500 to-cyan-500",
     },
     {
@@ -53,25 +53,16 @@ export default function LandingPage() {
             className="mb-8"
           >
             <div className="relative w-full max-w-2xl mx-auto mb-8">
-              <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl flex items-center justify-center border border-gray-700">
-               {!isVideoPlaying ? (
-  <Button
-    onClick={() => setIsVideoPlaying(true)}
-    size="lg"
-    className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20"
-  >
-    <Play className="w-6 h-6 mr-2" />
-    Watch Introduction
-  </Button>
-) : (
-  <video
-    className="w-full h-full rounded-2xl"
-    src="/Samarth_Bhole__From_Complex_Problems_to_Elegant_Solutions.mp4"
-    controls
-    autoPlay
-  />
-)}
-              </div>
+              <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden border border-gray-700">
+    <video
+      className="w-full h-full rounded-2xl"
+      src="/Samarth_Bhole__From_Complex_Problems_to_Elegant_Solutions.mp4"
+      autoPlay
+      loop
+      playsInline
+      controls
+    />
+  </div>
             </div>
           </motion.div>
 

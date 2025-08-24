@@ -8,40 +8,13 @@ import { FileText, ExternalLink, Brain, Zap, TrendingUp } from "lucide-react"
 
 export default function ResearchPage() {
   const researchProjects = [
-    {
-      title: "LSTM-based Cryogen Control for Superconducting Accelerators",
-      institution: "IUAC, Delhi",
-      year: "2023",
-      icon: <Zap className="w-6 h-6" />,
-      color: "from-blue-500 to-cyan-500",
-      image: "/placeholder.svg?height=300&width=500",
-      summary: "Advanced neural network system for precise cryogen level control in particle accelerators",
-      description:
-        "Developed an LSTM-based neural network for autonomous control of cryogen levels in superconducting accelerators. The system maintains precise temperature control critical for accelerator operations with minimal human intervention.",
-      achievements: [
-        "±1% error margin maintained over extended periods",
-        "Successfully deployed for accelerator operations at IUAC Delhi",
-        "Reduced manual intervention by 85%",
-        "Real-time monitoring and predictive maintenance capabilities",
-        "Improved operational efficiency and safety protocols",
-      ],
-      technologies: ["LSTM", "TensorFlow", "Python", "Real-time Systems", "Control Theory"],
-      metrics: {
-        accuracy: "±1% error",
-        deployment: "Production",
-        efficiency: "85% automation",
-        impact: "Critical operations",
-      },
-      status: "Deployed",
-      publications: [],
-    },
-    {
+     {
       title: "Emotion Detection via EEG Brainwaves",
       institution: "Research Publication",
       year: "2022",
       icon: <Brain className="w-6 h-6" />,
       color: "from-purple-500 to-pink-500",
-      image: "/placeholder.svg?height=300&width=500",
+      image: "/eeg.jpeg?height=300&width=500",
       summary: "High-accuracy emotion recognition using EEG signals and advanced RNN architecture",
       description:
         "Developed a sophisticated RNN model with GRU architecture for emotion recognition using EEG brainwave data. The research achieved state-of-the-art accuracy in emotion classification and was presented at an international conference.",
@@ -68,6 +41,33 @@ export default function ResearchPage() {
         },
       ],
     },
+    {
+      title: "LSTM-based Cryogen Control for Superconducting Accelerators",
+      institution: "IUAC, Delhi",
+      year: "2023",
+      icon: <Zap className="w-6 h-6" />,
+      color: "from-blue-500 to-cyan-500",
+      image: "/lstm.png?height=300&width=500",
+      summary: "Advanced neural network system for precise cryogen level control in particle accelerators",
+      description:
+        "Developed an LSTM-based neural network for autonomous control of cryogen levels in superconducting accelerators. The system maintains precise temperature control critical for accelerator operations with minimal human intervention.",
+      achievements: [
+        "±1% error margin maintained over extended periods",
+        "Successfully deployed for accelerator operations at IUAC Delhi",
+        "Reduced manual intervention by 85%",
+        "Real-time monitoring and predictive maintenance capabilities",
+        "Improved operational efficiency and safety protocols",
+      ],
+      technologies: ["LSTM", "TensorFlow", "Python", "Real-time Systems", "Control Theory"],
+      metrics: {
+        accuracy: "±1% error",
+        deployment: "Production",
+        efficiency: "85% automation",
+        impact: "Critical operations",
+      },
+      status: "Deployed",
+      publications: [],
+    }
   ]
 
   const researchInterests = [
